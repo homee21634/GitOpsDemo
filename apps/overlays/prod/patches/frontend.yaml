@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: frontend:prod
+        image: nginx:1.21:prod
         env:
         - name: API_URL
           value: http://backend:3000/prod
