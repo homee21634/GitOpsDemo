@@ -1,17 +1,37 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: demo-app
+  name: myapp-dev
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-username/your-repo.git
+    repoURL: https://github.com/homee21634/GitOpsDemo.git
     targetRevision: HEAD
     path: apps/overlays/dev
   destination:
     server: https://kubernetes.default.svc
-    namespace: demo
+    namespace: myapp-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/homee21634/GitOpsDemo.git
+    targetRevision: HEAD
+    path: apps/overlays/prod
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: myapp-prod
   syncPolicy:
     automated:
       prune: true
