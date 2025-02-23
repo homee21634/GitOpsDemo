@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: node:16-alpine:dev
+        image: node:dev
         env:
         - name: NODE_ENV
           value: development
