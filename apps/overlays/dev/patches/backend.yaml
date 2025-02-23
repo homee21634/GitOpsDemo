@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: node:dev
+        image: node:lts
         env:
         - name: NODE_ENV
           value: development
