@@ -3,8 +3,10 @@ kind: Service
 metadata:
   name: frontend
 spec:
+  type: NodePort    # 或者使用 LoadBalancer
   ports:
   - port: 80
     targetPort: 80
+    nodePort: 30080  # 可以通過節點的 30080 端口訪問
   selector:
     app: frontend

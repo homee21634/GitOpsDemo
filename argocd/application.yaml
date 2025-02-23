@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: myapp-dev
+  name: fullstack-dev
   namespace: argocd
 spec:
   project: default
@@ -11,11 +11,13 @@ spec:
     path: apps/overlays/dev
   destination:
     server: https://kubernetes.default.svc
-    namespace: myapp-dev
+    namespace: demo
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
 
 ---
 apiVersion: argoproj.io/v1alpha1
